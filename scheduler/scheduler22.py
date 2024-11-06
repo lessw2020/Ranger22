@@ -104,7 +104,7 @@ class Scheduler22:
             alpha = current_iter / (self.training_niter - warmdown_niter + 1)
 
             if self.warmdown_type == "linear":
-                group["lr"] = min(min_lr, (1 - alpha) * lr + alpha * min_lr)
+                group["lr"] = max(min_lr, (1 - alpha) * lr + alpha * min_lr)
 
             elif self.warmdown_type == "loglinear":
                 group["lr"] = 10 ** (
